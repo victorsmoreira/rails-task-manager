@@ -1,0 +1,19 @@
+<div class="task-wrapper">
+  <div class="task-title">
+    <h1><%= @task.title %></h1>
+    <%= link_to 'Edit this task', task_edit_path(@task), class: 'btn btn-light' %>
+  </div>
+  <p class='details'><%= @task.details %></p>
+
+  <% if @task.completed %>
+    <p class='border-bottom py-3'>
+      <i class="fas fa-check-square"></i> This task is done!
+    </p>
+  <% else %>
+    <p class='border-bottom py-3'>
+      <i class="far fa-square"></i> This task is not done yet!
+    </p>
+  <% end %>
+
+  <%= link_to 'Back to list', tasks_path %>
+</div>

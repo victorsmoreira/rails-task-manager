@@ -1,0 +1,19 @@
+<% checked_box = '<i class="fas fa-check-square"></i>'.html_safe %>
+<% empty_box = '<i class="far fa-square"></i>'.html_safe %>
+<% trash_icon = '<i class="fas fa-trash-alt"></i>'.html_safe %>
+<% add_text = '<i class="fas fa-plus"></i> Add a new task'.html_safe %>
+
+<div class="index">
+  <h1 class='app-name'><i class="fab fa-trello"></i> Trollo</h1>
+
+  <ul>
+    <% @tasks.each do |task| %>
+      <li>
+        <%= task.completed ? checked_box : empty_box %> <%= link_to task.title, task_path(task) %>
+        <%= link_to trash_icon, task_path(task), method: :delete, data: { confirm: "Tem certeza?" }, class: 'btn-delete' %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to add_text, tasks_new_path %>
+</div>
